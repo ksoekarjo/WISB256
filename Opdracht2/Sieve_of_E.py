@@ -4,7 +4,7 @@ print(str(sys.argv))
 import time
 T1 = time.perf_counter()
 
-N=int(sys.argv[1])
+N=int(sys.argv[2])
 numbers=list(range(N))
 del numbers[0]
 del numbers[0]
