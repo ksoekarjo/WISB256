@@ -1,25 +1,22 @@
+def primes(n): # sieve of eratosthenes
+    ps, sieve = [], [True] * (n + 1)
+    for p in range(2, n + 1):
+        if sieve[p]:
+           ps.append(p)
+           for i in range(p * p, n + 1, p):
+               sieve[i] = False
+    return(ps)
+
 import sys
-print(str(sys.argv))
 
 import time
 T1 = time.perf_counter()
-
-N=int(sys.argv[1])
-numbers=list(range(N))
-del numbers[0]
-del numbers[0]
-a=0
-while a<len(numbers):
-    i=a+1
-    while i<len(numbers):
-        if numbers[i]%numbers[a]==0:
-            del numbers[i]
-        i+=1
-    a+=1
+primes(int(sys.argv[1]))
 T2 = time.perf_counter()
 fout=open('prime.dat','w')
-fout.write("\n".join(str(i) for i in numbers))
+fout.write('\n'.join(str(i) for i in primes(int(sys.argv[1]))))
 fout.close()
-print('Found', len(numbers), 'Prime numbers smaller than', N, 'in', T2 - T1, 'sec.')
+print('Found', len(primes(int(sys.argv[1]))), 'Prime numbers smaller than', sys.argv[1], 'in', T2 - T1, 'sec.')
+
 
 
