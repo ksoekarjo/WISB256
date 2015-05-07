@@ -13,23 +13,24 @@ def drop_needle(L):
         return True
     else:
         return False
-N = int(sys.argv[1])
-L = float(sys.argv[2])
-if N ==0 or L ==0:
+if len(sys.argv)<=2:
     print("Use: estimate_pi.py N L")
-elif L<=0:
-    print("L should be greater than 0")
 else:
-    i=1
-    hits=0
-    while i<= N:
-        drop_needle(L)
-        if drop_needle(L) == True:
-            hits+=1
-        i+=1
-    if L<=1:
-        pi=2*L/(hits/N)
+    N = int(sys.argv[1])
+    L = float(sys.argv[2])
+    if L<=0:
+        print("L should be greater than 0")
     else:
-        pi=(2*L-2*(math.sqrt(L**2-1)+math.asin(1/L)))/(hits/N-1)
-    print(hits, "hits in", N, "tries")
-    print("Pi =", pi)
+        i=1
+        hits=0
+        while i<= N:
+            drop_needle(L)
+            if drop_needle(L) == True:
+                hits+=1
+            i+=1
+        if L<=1:
+            pi=2*L/(hits/N)
+        else:
+            pi=(2*L-2*(math.sqrt(L**2-1)+math.asin(1/L)))/(hits/N-1)
+        print(hits, "hits in", N, "tries")
+        print("Pi =", pi)
