@@ -1,6 +1,8 @@
 import sys
 import random
 import math
+if len(sys.argv)==4:
+    random.seed(int(sys.argv[3]))
 def drop_needle(L):
     # uniform in [0,1]
     x1 = random.random()
