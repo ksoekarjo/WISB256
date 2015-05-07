@@ -1,7 +1,7 @@
 import sys
+import random
+import math
 def drop_needle(L):
-    import random
-    import math
     # uniform in [0,1]
     x1 = random.random()
     # uniform in [0,2pi]
@@ -15,8 +15,8 @@ N = int(sys.argv[1])
 L = float(sys.argv[2])
 if N ==0 or L ==0:
     print("Use: estimate_pi.py N L")
-elif L>1 or L<0:
-    print("L should be between 0 and 1")
+elif L<=0:
+    print("L should be greater than 0")
 else:
     i=1
     hits=0
@@ -25,6 +25,9 @@ else:
         if drop_needle(L) == True:
             hits+=1
         i+=1
-    pi=2*L/(hits/N)
+    if L<=1:
+        pi=2*L/(hits/N)
+    else:
+        pi=(2*L-2*(math.sqrt(L**2-1)+math.asin(1/L)))/(hits/N-1)
     print(hits, "hits in", N, "tries")
     print("Pi =", pi)
