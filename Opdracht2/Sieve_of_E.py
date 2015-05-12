@@ -13,7 +13,7 @@ import time
 T1 = time.perf_counter()
 primes(int(sys.argv[1]))
 T2 = time.perf_counter()
-fout=open('prime.dat','w')
+fout=open(sys.argv[2],'w')
 fout.write('\n'.join(str(i) for i in primes(int(sys.argv[1]))))
 fout.close()
 print('Found', len(primes(int(sys.argv[1]))), 'Prime numbers smaller than', sys.argv[1], 'in', T2 - T1, 'sec.')
