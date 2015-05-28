@@ -1,10 +1,10 @@
-def f(x):
-    return x-1
 def findRoot(f,a,b,epsilon):
-    while abs(b-a)>epsilon:
-        m=(a+b)/2
+    m=(a+b)/2
+    if abs(b-a)<epsilon:
+        return m
+    else:
         if f(m)*f(a)>0:
-            a=m
+            return findRoot(f,m,b,epsilon)
         else:
-            b=m
-    print(m)
+            return findRoot(f,a,m,epsilon)
+
